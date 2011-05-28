@@ -37,7 +37,7 @@ for ($i = 0; $i < count($bandArray); $i++) {
 
 $bandsJson = json_encode($bandArray);
 
-$fp = fopen('band_data_TERMS.json', 'w');
+$fp = fopen('band_data.json', 'w');
 fwrite($fp, $bandsJson);
 fclose($fp);
 
