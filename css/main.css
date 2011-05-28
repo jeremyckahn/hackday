@@ -153,29 +153,12 @@ h1
 				padding:40px 0;
 			
 			}
-				.band_image 
-				{
-					position:relative;
-					padding:20px;
-					width:200px;
-					
-					-moz-border-radius: 15px;
-					border-radius: 15px;
-
-					-moz-box-shadow: 1px 5px 5px #888;
-					-webkit-box-shadow: 1px 5px 5px #888;
-					box-shadow: 1px 5px 5px #888;
-				}
-					.band_image img
-					{
-						position:relative;
-						max-height: 200px;
-					}
 				.band_bio
 				{
 					position:relative;
 					line-height:17pt;
 					padding:20px;
+					min-height: 300px;
 					
 					font-size:10pt;
 					
@@ -186,10 +169,42 @@ h1
 					-webkit-box-shadow: 1px 5px 5px #888;
 					box-shadow: 1px 5px 5px #888;
 				}
+				
+					.band_image 
+					{
+						position:relative;
+						padding:20px;
+						width:200px;
+						float:left;
+						margin-right:20px;
+
+						-moz-border-radius: 15px;
+						border-radius: 15px;
+
+						-moz-box-shadow: 1px 5px 5px #888;
+						-webkit-box-shadow: 1px 5px 5px #888;
+						box-shadow: 1px 5px 5px #888;
+					}
+						.band_image img
+						{
+							position:relative;
+							max-height: 200px;
+						}
+				
 					.band_bio a
 					{
 						color:#000;
 						text-decoration:none;
 						font-size:15pt;
 					}
+					
+					.descrip
+					{
+						position:relative;
+					}
+						.descrip p
+						{
+							display:none;
+						}
+				
 				
