@@ -131,6 +131,7 @@ h1
 							padding:10px;
 							width:80px;
 							float:left;
+							cursor:pointer;
 							
 							font-size:13pt;
 						}
@@ -195,6 +196,7 @@ h1
 						{
 							position:relative;
 							height: 160px;
+							max-width:200px;
 						}
 				
 					.band_bio a
@@ -206,7 +208,7 @@ h1
 					
 					.band_bio div
 					{
-						height: 120px;
+						height: 130px;
 						overflow: hidden;
 						/*display:none;*/
 					}
