@@ -100,13 +100,10 @@ $(function () {
 		}
 	});
 	
-	//console.dir(bandList.prototype.el)
-	
 	$.ajax('php/band_data.json', {
 		success: function (data) {
 			metaData = $.parseJSON(data);
 			appStart();
 		}
 	});
-	
 });
