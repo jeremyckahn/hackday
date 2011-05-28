@@ -123,33 +123,38 @@ $(function () {
 				}
 			}
 			
-			getArtistData (bandData.id_echoNest, 'image', function (data) {
-				var parsedData;
-				
-				$.parseJSON(data);
-				
-				if (data.response.images.length) {
-					bandData.band_image = data.response.images[0].url;
-					complete();
-				}
-			});
-			
-			getArtistData (bandData.id_echoNest, 'bio', function (data) {
-				var parsedData;
-				
-				$.parseJSON(data);
-				
-				if (data.response.biographies.length) {
-					bandData.band_bio = data.response.biographies[0].text;
-					complete();
-				}
-			});
+			if (bandData.band_image && bandData.band_bio) {
+				complete();
+			} else {
+				getArtistData (bandData.id_echoNest, 'image', function (data) {
+					var parsedData;
+
+					$.parseJSON(data);
+
+					if (data.response.images.length) {
+						bandData.band_image = data.response.images[0].url;
+						complete();
+					}
+				});
+
+				getArtistData (bandData.id_echoNest, 'bio', function (data) {
+					var parsedData;
+
+					$.parseJSON(data);
+
+					if (data.response.biographies.length) {
+						bandData.band_bio = data.response.biographies[0].text;
+						complete();
+					}
+				});
+			}
 		},
 		
 		update: function (bands) {
 			var i;
 			
 			this.dumpList();
+			this.el.show();
 			
 			for (i = 0; i < bands.length; i++) {
 				this.addBand(bands[i]);
