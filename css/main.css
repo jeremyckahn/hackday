@@ -48,6 +48,9 @@ body
 
 h1
 {
+	position:relative;
+	padding:20px 0;
+	
 	font-size:18pt;
 }
 
@@ -149,9 +152,10 @@ h1
 			/*Band Template*/
 			.band
 			{
+				clear: both;
 				position:relative;
 				width:750px;
-				padding:40px 0;
+				padding:10px 0;
 			
 			}
 				.band_bio
@@ -159,7 +163,7 @@ h1
 					position:relative;
 					line-height:17pt;
 					padding:20px;
-					min-height: 300px;
+					/*min-height: 300px;*/
 					
 					font-size:10pt;
 					
@@ -188,8 +192,9 @@ h1
 					}
 						.band_image img
 						{
+							
 							position:relative;
-							max-height: 200px;
+							height: 160px;
 						}
 				
 					.band_bio a
@@ -199,13 +204,11 @@ h1
 						font-size:15pt;
 					}
 					
-					.descrip
+					.band_bio div
 					{
-						position:relative;
+						height: 120px;
+						overflow: hidden;
+						/*display:none;*/
 					}
-						.descrip p
-						{
-							display:none;
-						}
 				
 				
