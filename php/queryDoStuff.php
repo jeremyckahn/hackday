@@ -12,8 +12,6 @@ for ($i = 1; $i < 7; $i++) {
 
 	$responseArr = json_decode($response, true);
 
-
-
 	$fp = fopen('output' . $i . '.json', 'w');
 	fwrite($fp, $response);
 	fclose($fp);
