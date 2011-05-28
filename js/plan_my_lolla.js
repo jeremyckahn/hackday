@@ -3,6 +3,7 @@ $(function () {
 	
 	var lolla,
 		genrePicker,
+		bandList,
 		metaData;
 		
 	function findBandsByGenre (genre) {
@@ -26,41 +27,80 @@ $(function () {
 			}
 		}
 		
-		console.log(matchingBands);
+		//console.log(matchingBands);
 		
 		return matchingBands;
 	}
 		
 	function appStart () {
-		//console.log(metaData)
-		
 		lolla = window.lolla = {};
-
-		genrePicker = Backbone.View.extend({
-
-			el: $('#genre-picker'),
-
-			events: {
-				'click ul li': 'selectGenre'
-			},
-
-			initialize: function () {
-
-			},
-
-			selectGenre: function (ev) {
-				var target,
-					requestedGenre;
-
-				target = $(ev.target);
-				requestedGenre = target.attr('id');
-				findBandsByGenre(requestedGenre);
-			}
-
-		});
-
 		lolla.genrePicker = new genrePicker();
+		lolla.bandList = new bandList();
 	}
+	
+	
+	genrePicker = Backbone.View.extend({
+
+		el: $('#genre-picker'),
+
+		events: {
+			'click ul li': 'selectGenre'
+		},
+
+		initialize: function () {
+
+		},
+
+		selectGenre: function (ev) {
+			var target,
+				requestedGenre,
+				matchingBands;
+
+			target = $(ev.target);
+			requestedGenre = target.attr('id');
+			matchingBands = findBandsByGenre(requestedGenre);
+			lolla.bandList.update(matchingBands);
+		}
+	});
+	
+	bandList = Backbone.View.extend({
+		el: $('#band-list'),
+		
+		list: $(),
+		
+		events: {
+			
+		},
+		
+		initialize: function () {
+			this.list = this.el.find('ul');
+		},
+		
+		dumpList: function () {
+			var ul;
+			
+			ul = this.el.find('ul');
+			ul.children().remove();
+		},
+		
+		addBand: function (bandData) {
+			$('<li>')
+				.html(bandData.band_name)
+				.appendTo(this.list);
+		},
+		
+		update: function (bands) {
+			var i;
+			
+			this.dumpList();
+			
+			for (i = 0; i < bands.length; i++) {
+				this.addBand(bands[i]);
+			}
+		}
+	});
+	
+	//console.dir(bandList.prototype.el)
 	
 	$.ajax('php/band_data.json', {
 		success: function (data) {
