@@ -1,14 +1,11 @@
-function getArtistData (artistId) 
+function getArtistData (artistId, callback) 
 {
 	$.ajax({
 
 	  //get artist image
 	  url: "http://developer.echonest.com/api/v4/artist/images?api_key=YCPKHEGQZ9BTYBBBE&id=" + artistId + "&format=json&results=1&start=0&license=unknown",
 	  context: document.body,
-	  success: function(image)
-	  {
-		console.log(image);
-	  }
+	  success: callback
 
 	});
 	
@@ -17,10 +14,7 @@ function getArtistData (artistId)
 	  //get artist bio
 	  url: "http://developer.echonest.com/api/v4/artist/biographies?api_key=YCPKHEGQZ9BTYBBBE&id=" + artistId + "&format=json&results=1&start=0&license=cc-by-sa",
 	  context: document.body,
-	  success: function(bio)
-	  {
-		console.log(bio);
-	  }
+	  success: callback
 
 	});
 }
