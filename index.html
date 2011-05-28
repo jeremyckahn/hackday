@@ -13,6 +13,22 @@
 		<!--Main Page Styles-->
 		<link rel="stylesheet" href="css/main.css" />
 		<script src="project-framework/www/_projectname/js/modernizr.js?v=1.7"></script>
+		
+		<script id="band-tmpl" type="text/html">
+			<div class="band">
+				<div class="band_image">	
+					<h1>{{ band_name }}</h1>
+					<img src="{{ bandImage }}" alt="" />
+				</div><!--.band_image-->
+
+				<div class="band_bio">
+					<h3><a href="#">Bio</a></h3>
+					<div>{{ bandBio }}</div>
+				</div><!--band_bio-->
+
+			</div><!--.band-->
+		</script>
+		
 </head>
 <body>
 	<div id="container">
@@ -68,7 +84,7 @@
 	<script src="project-framework/www/_projectname/js/backbone.js"></script>
 	<script src="project-framework/www/_projectname/js/cq.min.js"></script>
 	<script src="project-framework/www/_projectname/js/vsa.js"></script>
-	<script src="project-framework/www/_projectname/js/script.js?v=1"></script>
+	<script src="js/mustache.js"></script>
 	<script src="js/plan_my_lolla.js"></script>
 	
 </body>
