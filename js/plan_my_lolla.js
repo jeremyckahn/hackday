@@ -4,7 +4,8 @@ $(function () {
 	var lolla,
 		genrePicker,
 		bandList,
-		metaData;
+		metaData,
+		bandTmpl;
 		
 	function findBandsByGenre (genre) {
 		var i,
@@ -33,6 +34,7 @@ $(function () {
 	}
 		
 	function appStart () {
+		
 		lolla = window.lolla = {};
 		lolla.genrePicker = new genrePicker();
 		lolla.bandList = new bandList();
@@ -85,7 +87,7 @@ $(function () {
 		
 		addBand: function (bandData) {
 			$('<li>')
-				.html(bandData.band_name)
+				.html(Mustache.to_html(bandTmpl.text(), bandData))
 				.appendTo(this.list);
 		},
 		
@@ -100,10 +102,14 @@ $(function () {
 		}
 	});
 	
+	// Begin loading stuff...
 	$.ajax('php/band_data.json', {
 		success: function (data) {
 			metaData = $.parseJSON(data);
 			appStart();
 		}
 	});
+	
+	// Bind stuff...
+	bandTmpl = $('#band-tmpl');
 });
