@@ -79,7 +79,7 @@ h1
 					margin:0 auto;
 				}
 			
-			#main
+			#genre-picker
 			{
 				position:relative;
 				padding: 0;
@@ -132,7 +132,7 @@ h1
 							font-size:13pt;
 						}
 				
-				#band_list
+				#band-list
 				{
 					position:relative;
 					margin: 10px 0;
