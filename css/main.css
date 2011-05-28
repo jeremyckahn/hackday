@@ -177,6 +177,7 @@ h1
 				
 					.band_image 
 					{
+						z-index: 150;
 						position:relative;
 						padding:20px;
 						width:200px;
@@ -192,7 +193,6 @@ h1
 					}
 						.band_image img
 						{
-							
 							position:relative;
 							height: 160px;
 						}

@@ -66,7 +66,7 @@ $(function () {
 	
 	genrePicker = Backbone.View.extend({
 
-		el: $('#genre-picker'),
+		el: $('#genre_list'),
 
 		events: {
 			'click ul li': 'selectGenre'
@@ -99,6 +99,24 @@ $(function () {
 		
 		initialize: function () {
 			this.list = this.el.find('ul');
+			this.enableExpandingListItems();
+		},
+		
+		enableExpandingListItems: function () {
+			this.el.delegate('img', 'click', function (ev) {
+				var parentThing,
+					targetDiv;
+				
+				parentThing = $(ev.target).closest('.band');
+				targetDiv = parentThing.find('.band_bio div');
+				
+				var targetHeight = vsa.getNaturalHeight(targetDiv)
+				targetDiv.animate({
+					height: targetHeight 
+				}, {
+					
+				});
+			});
 		},
 		
 		dumpList: function () {
