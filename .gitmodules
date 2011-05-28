@@ -1,0 +1,3 @@
+[submodule "project-framework"]
+	path = project-framework
+	url = git@github.com:vsa-partners/project-framework.git
