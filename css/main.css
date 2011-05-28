@@ -103,7 +103,7 @@ h1
 					position:relative;
 					margin: 10px 0;
 					padding:20px;
-					height:100px;
+					height:75px;
 					
 					-moz-box-shadow: 1px 3px 5px #888;
 					-webkit-box-shadow: 1px 3px 5px #888;
@@ -115,15 +115,22 @@ h1
 				}
 					#genre_logo
 					{
-
+						
 					}
+					
+						#genre_logo img
+						{
+							display: block;
+							margin: 0px auto;
+						}
 					
 					#genre_list ul
 					{
-						position:relative;
-						left:10px;
-						
-						list-style:none;
+						position: relative;
+						left: 10px;
+						list-style: none;
+						width: 500px;
+						margin: 0px auto;
 					}
 						#genre_list ul li
 						{
@@ -131,7 +138,7 @@ h1
 							padding:10px;
 							width:80px;
 							float:left;
-							
+							text-align: center;
 							font-size:13pt;
 						}
 				
@@ -146,6 +153,12 @@ h1
 					{
 
 					}
+					
+						#band-logo img
+						{
+							display: block;
+							margin: 0px auto;
+						}
 					
 					
 			
