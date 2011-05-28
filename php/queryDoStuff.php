@@ -1,7 +1,5 @@
 <?php
 
-//echo("running... \r\n");
-
 for ($i = 1; $i < 7; $i++) {
 	$ch = curl_init("http://api.dostuffmedia.com/bands.json?key=af9bf4e58022305398c885ae8a2e9888725dab0a&page=" . $i);
 

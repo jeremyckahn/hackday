@@ -21,7 +21,6 @@ for ($i = 1; $i < 7; $i++) {
 	}
 }
 
-//print_r($bandData);
 $jsonData = json_encode($bandData);
 
 $fp = fopen('band_data.json', 'w');
