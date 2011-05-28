@@ -2,29 +2,27 @@
 
 //echo("running... \r\n");
 
+for ($i = 1; $i < 7; $i++) {
+	$ch = curl_init("http://api.dostuffmedia.com/bands.json?key=af9bf4e58022305398c885ae8a2e9888725dab0a&page=" . $i);
 
-$ch = curl_init("http://api.dostuffmedia.com/bands.json?key=af9bf4e58022305398c885ae8a2e9888725dab0a");
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$response = curl_exec($ch);
 
-$response = curl_exec($ch);
-
-$responseArr = json_decode($response, true);
-
-
-
-$fp = fopen('output.json', 'w');
-fwrite($fp, $response);
-fclose($fp);
+	$responseArr = json_decode($response, true);
 
 
 
+	$fp = fopen('output' . $i . '.json', 'w');
+	fwrite($fp, $response);
+	fclose($fp);
 
-$response = json_encode($responseArr["bands"]);
+	//$response = json_encode($responseArr["bands"]);
 
-echo($response);
+	echo($response);
 
-curl_close($ch);
+	curl_close($ch);
+}
 
 ?>
