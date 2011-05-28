@@ -28,9 +28,32 @@ $(function () {
 			}
 		}
 		
-		//console.log(matchingBands);
-		
 		return matchingBands;
+	}
+	
+	function getArtistData (artistId, what, callback) {
+		
+		var source = {
+			image: function () {
+				$.ajax({
+				  //get artist image
+				  url: "http://developer.echonest.com/api/v4/artist/images?api_key=YCPKHEGQZ9BTYBBBE&id=" + artistId + "&format=json&results=1&start=0&license=unknown&callback=?",
+				  context: document.body,
+				  success: callback
+				});
+			},
+			
+			bio: function () {
+				$.ajax({
+				  //get artist bio
+				  url: "http://developer.echonest.com/api/v4/artist/biographies?api_key=YCPKHEGQZ9BTYBBBE&id=" + artistId + "&format=json&results=1&start=0&license=cc-by-sa&callback=?",
+				  context: document.body,
+				  success: callback
+				});
+			}
+		};
+		
+		source[what]();
 	}
 		
 	function appStart () {
@@ -86,9 +109,41 @@ $(function () {
 		},
 		
 		addBand: function (bandData) {
-			$('<li>')
-				.html(Mustache.to_html(bandTmpl.text(), bandData))
-				.appendTo(this.list);
+			var self = this;
+			
+			function complete () {
+				var output;
+				
+				if (bandData.band_image && bandData.band_bio) {
+					output = Mustache.to_html(bandTmpl.text(), bandData)
+
+					$('<li>')
+						.html(output)
+						.appendTo(self.list);
+				}
+			}
+			
+			getArtistData (bandData.id_echoNest, 'image', function (data) {
+				var parsedData;
+				
+				$.parseJSON(data);
+				
+				if (data.response.images.length) {
+					bandData.band_image = data.response.images[0].url;
+					complete();
+				}
+			});
+			
+			getArtistData (bandData.id_echoNest, 'bio', function (data) {
+				var parsedData;
+				
+				$.parseJSON(data);
+				
+				if (data.response.biographies.length) {
+					bandData.band_bio = data.response.biographies[0].text;
+					complete();
+				}
+			});
 		},
 		
 		update: function (bands) {
