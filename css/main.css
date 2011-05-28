@@ -139,6 +139,7 @@ h1
 							width:80px;
 							float:left;
 							text-align: center;
+							cursor:pointer;
 							font-size:13pt;
 						}
 				
@@ -208,6 +209,7 @@ h1
 						{
 							position:relative;
 							height: 160px;
+							max-width:200px;
 						}
 				
 					.band_bio a
@@ -219,7 +221,7 @@ h1
 					
 					.band_bio div
 					{
-						height: 120px;
+						height: 130px;
 						overflow: hidden;
 						/*display:none;*/
 					}
